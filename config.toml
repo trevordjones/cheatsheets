@@ -1,3 +1,9 @@
 baseurl = "https://trevordjones.github.io/cheatsheets/"
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = "Rails Development"
+Paginate = 10
+
+[params]
+  githubName = "trevordjones"
+  description = "Common Commands"
+  hideShareOptions = true
