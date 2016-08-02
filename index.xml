@@ -6,8 +6,61 @@
     <description>Recent content on Rails Development</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 01 Aug 2016 13:48:13 -0400</lastBuildDate>
+    <lastBuildDate>Tue, 02 Aug 2016 17:25:54 -0400</lastBuildDate>
     <atom:link href="https://trevordjones.github.io/cheatsheets/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Terminal Commands</title>
+      <link>https://trevordjones.github.io/cheatsheets/post/terminal/</link>
+      <pubDate>Tue, 02 Aug 2016 17:25:54 -0400</pubDate>
+      
+      <guid>https://trevordjones.github.io/cheatsheets/post/terminal/</guid>
+      <description>
+
+&lt;h3 id=&#34;commands&#34;&gt;Commands&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ ls # list directory contents
+
+$ ls -l # list directory contents as a list (one per line)
+
+$ ls -la # list directory contents as well as hidden files (files that begin with a &#39;.&#39;)
+
+$ cd &#39;directory_name&#39; # change into the given directory
+
+$ cd .. # cd out of the current directory - one level
+
+$ cd ../.. # cd out two levels
+
+$ cd ~ # go to home directory (should be your computer username)
+
+$ cd / # go to root directory
+
+$ mkdir &#39;directory_name&#39; # create directory
+
+$ rm # remove file
+$ rmdir # remove directory - will only work if directory is empty
+$ rm -rf &#39;directory_name&#39; # remove directory and ALL it&#39;s contents. Be warned when using this - you will not be prompted to continue. It will just wipe it out.
+
+$ touch &#39;file_name&#39; # create a file with the name you give it
+
+$ pwd # Get complete file path
+
+$ cat &#39;file_name&#39; # print contents of the file to the terminal
+
+$ echo &#39;add this text&#39; &amp;gt;&amp;gt; &#39;file_name.txt&#39; # Add text to a file
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;hotkeys&#34;&gt;Hotkeys&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Tab - Autocomplete to file path. You just need to type the first letter or two and then it will complete&lt;/li&gt;
+&lt;li&gt;Up/Down Arrow - See command history&lt;/li&gt;
+&lt;li&gt;CTRL + r &amp;lsquo;previous command&amp;rsquo; - Search command history&lt;/li&gt;
+&lt;li&gt;CTRL + l - clears the screen but does not get rid of session history&lt;/li&gt;
+&lt;li&gt;CMD + k - clears the screen and does get rid of session history&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Github Cheatsheet</title>
