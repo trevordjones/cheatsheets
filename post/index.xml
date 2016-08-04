@@ -6,8 +6,37 @@
     <description>Recent content in Posts on Rails Development</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 02 Aug 2016 17:25:54 -0400</lastBuildDate>
+    <lastBuildDate>Tue, 02 Aug 2016 17:26:29 -0400</lastBuildDate>
     <atom:link href="https://trevordjones.github.io/cheatsheets/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Install Bootstrap</title>
+      <link>https://trevordjones.github.io/cheatsheets/post/install-bootstrap/</link>
+      <pubDate>Tue, 02 Aug 2016 17:26:29 -0400</pubDate>
+      
+      <guid>https://trevordjones.github.io/cheatsheets/post/install-bootstrap/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Add ‘bootstrap-sass’ anywhere in your Gemfile.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Inside your terminal (make sure you’re in the folder where your Rails app is), run: bundle&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Inside &lt;code&gt;app/assets/stylesheets&lt;/code&gt;, create a new file called &lt;code&gt;_external.css.scss&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Add these lines to that file:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;@import &amp;quot;bootstrap-sprockets&amp;quot;;
+@import &amp;quot;bootstrap&amp;quot;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Inside &lt;code&gt;app/assets/javascripts/application.js&lt;/code&gt;, add this line under the line that says &lt;code&gt;//=require jquery&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;//= require bootstrap-sprockets
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;If your rails server was already running, restart it.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
     
     <item>
       <title>Terminal Commands</title>

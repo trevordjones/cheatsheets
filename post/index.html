@@ -45,9 +45,10 @@
                     <a class="pure-button" href="https://github.com/trevordjones "><i class="fa fa-github-alt"></i> github</a>
                 </li>
                 
-                <li class="nav-item">
-                    <a class="pure-button" href="https://trevordjones.github.io/cheatsheets//index.xml"><i class="fa fa-rss"></i> rss</a>
-                </li>
+                
+                
+                  <li class="page-items"><a href="https://trevordjones.github.io/cheatsheets/page/summary">summary</a></li>
+                
             </ul>
         </nav>
     </div>
@@ -58,6 +59,43 @@
         <div>
             
             <div class="posts">
+                
+                <h1 class="content-subhead">02 Aug 2016, 17:26</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="https://trevordjones.github.io/cheatsheets/post/install-bootstrap/" class="post-title">Install Bootstrap</a>
+
+                        <p class="post-meta">
+                            
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        <ol>
+<li><p>Add ‘bootstrap-sass’ anywhere in your Gemfile.</p></li>
+
+<li><p>Inside your terminal (make sure you’re in the folder where your Rails app is), run: bundle</p></li>
+
+<li><p>Inside <code>app/assets/stylesheets</code>, create a new file called <code>_external.css.scss</code></p></li>
+
+<li><p>Add these lines to that file:</p>
+
+<pre><code class="language-css">@import &quot;bootstrap-sprockets&quot;;
+@import &quot;bootstrap&quot;;
+</code></pre></li>
+
+<li><p>Inside <code>app/assets/javascripts/application.js</code>, add this line under the line that says <code>//=require jquery</code></p>
+
+<pre><code class="language-javascript">//= require bootstrap-sprockets
+</code></pre></li>
+
+<li><p>If your rails server was already running, restart it.</p></li>
+</ol>
+
+                    </div>
+                </section>
                 
                 <h1 class="content-subhead">02 Aug 2016, 17:25</h1>
                 <section class="post">
