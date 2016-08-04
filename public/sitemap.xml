@@ -3,7 +3,12 @@
   
   <url>
     <loc>https://trevordjones.github.io/cheatsheets/</loc>
-    <lastmod>2016-08-02T17:25:54-04:00</lastmod>
+    <lastmod>2016-08-02T17:26:29-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://trevordjones.github.io/cheatsheets/post/install-bootstrap/</loc>
+    <lastmod>2016-08-02T17:26:29-04:00</lastmod>
   </url>
   
   <url>
@@ -19,6 +24,10 @@
   <url>
     <loc>https://trevordjones.github.io/cheatsheets/post/git-cheatsheet/</loc>
     <lastmod>2016-07-31T15:37:55-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://trevordjones.github.io/cheatsheets/page/summary/</loc>
   </url>
   
 </urlset>

@@ -7,3 +7,4 @@ Paginate = 10
   githubName = "trevordjones"
   description = "Common Commands"
   hideShareOptions = true
+  pages = ["summary"]
