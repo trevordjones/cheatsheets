@@ -10,6 +10,8 @@
 
 [Github]({{< ref "github-cheatsheet.md" >}})
 
+[Migrations]({{<ref "migrations.md" >}})
+
 [Rails Commands]({{< ref "rails-commands.md" >}})
 
 [Terminal]({{< ref "terminal.md" >}})
