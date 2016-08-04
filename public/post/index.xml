@@ -92,6 +92,47 @@ $ echo &#39;add this text&#39; &amp;gt;&amp;gt; &#39;file_name.txt&#39; # Add te
     </item>
     
     <item>
+      <title>Active Record Methods</title>
+      <link>https://trevordjones.github.io/cheatsheets/post/active-record-methods/</link>
+      <pubDate>Tue, 02 Aug 2016 17:25:07 -0400</pubDate>
+      
+      <guid>https://trevordjones.github.io/cheatsheets/post/active-record-methods/</guid>
+      <description>&lt;p&gt;Substitue &amp;ldquo;Model&amp;rdquo; with your model:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;Model.first
+# find the first record
+
+Model.last
+# find the last record
+
+Model.find_by(attribute: &#39;value&#39;)
+# find the record by a specific attribute
+
+Model.order(:attribute)
+# order the records by the attribute - ascending is default
+
+Model.order(:attribute :desc)
+# order the records by the attribute, use descending order
+
+Model.where(attribute: &#39;value&#39;)
+# returns all records where the attribute equals the given value
+
+Model.where(&#39;attribute &amp;gt; ?&#39;, &#39;value&#39;)
+# returns all records where the attribute is greater than the given value
+
+Model.where(&#39;attribute LIKE ?&#39;, &#39;%value%&#39;)
+# returns all records where the attribute is similar to the value. The % sign on each side means anything can be before or after - very general search
+
+Model.where(&#39;attribute LIKE ? AND other = ?&#39;, &#39;%value%&#39;, &#39;other_value&#39;)
+# returns all records where the attribute is similar to the value AND other is equal to the other value
+
+Model.where(&#39;attribute LIKE? OR other = ?&#39;, &#39;%value%&#39;, &#39;other_value&#39;)
+# returns all records where the attribute is similar to the value OR other is equal the other value
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Github Cheatsheet</title>
       <link>https://trevordjones.github.io/cheatsheets/post/github-cheatsheet/</link>
       <pubDate>Mon, 01 Aug 2016 13:48:13 -0400</pubDate>
