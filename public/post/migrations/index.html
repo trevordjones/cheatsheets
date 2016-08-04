@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Migrations &middot; Rails Development</title>
+
+    <meta name="description" content="">
+
+    <meta name="generator" content="Hugo 0.16" />
+    <meta name="twitter:card" content="summary">
+    
+    <meta name="twitter:title" content="Migrations &middot; Rails Development">
+    <meta name="twitter:description" content="">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Migrations &middot; Rails Development">
+    <meta property="og:description" content="">
+
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+
+    <link rel="stylesheet" href="https://trevordjones.github.io/cheatsheets//css/all.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="alternate" type="application/rss+xml" title="Rails Development" href="https://trevordjones.github.io/cheatsheets//index.xml" />
+</head>
+<body>
+
+
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="https://trevordjones.github.io/cheatsheets/">Rails Development</a></h1>
+            <h2 class="brand-tagline"> Common Commands </h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://github.com/trevordjones "><i class="fa fa-github-alt"></i> github</a>
+                </li>
+                
+                
+                
+                  <li class="page-items"><a href="https://trevordjones.github.io/cheatsheets/page/summary">summary</a></li>
+                
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                <h1 class="content-subhead">02 Aug 2016, 17:26</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="https://trevordjones.github.io/cheatsheets/post/migrations/" class="post-title">Migrations</a>
+
+                        <p class="post-meta">
+                            
+                            
+                        </p>
+                    </header>
+                    
+                    <div class="post-description">
+                        <p><strong>To create a database:</strong></p>
+
+<pre><code class="language-bash">rake db:create
+# Note: you only need to do this once per app
+</code></pre>
+
+<p><strong>To create a new table in the database:</strong></p>
+
+<pre><code class="language-bash">rails generate model Product name:string description:text 'price:decimal{5,2}'
+# DOUBLE CHECK THE GENERATED MIGRATION FILE CODE (in db/migrate folder)
+# If there are typos, you can fix them now before doing the next step
+
+rake db:migrate
+</code></pre>
+
+<p>Note: A description of rails database types can be found <a href="http://stackoverflow.com/questions/11889048/is-there-documentation-for-the-rails-column-types">here</a>.</p>
+
+<p><strong>To make changes to existing database tables:</strong></p>
+
+<pre><code class="language-bash">rails generate migration NameDescribingTheChange
+</code></pre>
+
+<p>Add code to the new migration file generated in the db/migrate folder.<br />
+All available commands here: <a href="http://api.rubyonrails.org/classes/ActiveRecord/Migration.html">http://api.rubyonrails.org/classes/ActiveRecord/Migration.html</a></p>
+
+<pre><code class="language-ruby"># Add a column
+add_column :products, :image, :string
+
+# Rename a column:
+rename_column :products, :image, :photo
+# In this example, image is the old name, photo is the new name
+
+# Remove a column:
+remove_column :products, :photo, :string
+
+# Change a data type:
+change_column :products, :quantity, :integer
+# In this example, quantity will become an integer
+
+# Using decimals:
+add_column :products, :price, :decimal, precision: 5, scale: 2
+# Precision is the total number of digits, scale is the number of digits after the decimal
+# In this example, 103.42 is a valid price, 3432.21 is invalid (total digits is greater than precision)
+
+# NOTE: postgres is a bit touchy changing strings to decimals, use these two lines in a migration:
+change_column :products, :price, &quot;numeric USING CAST(price AS numeric)&quot;
+change_column :products, :price, :decimal, precision: 9, scale: 2
+</code></pre>
+
+<p>DOUBLE CHECK YOUR MIGRATION FILE CODE<br />
+If there are typos, you can fix them now before doing the next step</p>
+
+<pre><code class="language-bash">rake db:migrate
+</code></pre>
+
+<p><strong>Shortcuts for the above:</strong></p>
+
+<pre><code class="language-bash"># To add a column to a table:
+rails generate migration AddImageToProducts image:string
+
+# To remove a column from a table:
+rails generate migration RemovePhotoFromProducts photo:string
+</code></pre>
+
+<p>No other shortcuts exist - if you need to rename, change, etc., you’ll need to generate an empty migration file and write the code in as described above</p>
+
+<p><strong>To generate sample data for database:</strong><br />
+Write code in the <code>db/seeds.rb</code> file (instead of through the rails console)</p>
+
+<pre><code class="language-bash">rake db:seed
+</code></pre>
+
+<p>Note: If you already have sample data created from rails console or your application, you can use this gem to generate a seed file so others can reproduce it: <a href="https://github.com/rroblak/seed_dump">https://github.com/rroblak/seed_dump</a></p>
+
+                    </div>
+                    
+                </section>
+            </div>
+            <div class="footer">
+    <div class="pure-menu pure-menu-horizontal pure-menu-open">
+        <ul>
+            <li>Powered by <a class="hugo" href="https://gohugo.io/" target="_blank">hugo</a></li>
+        </ul>
+    </div>
+</div>
+<script src="https://trevordjones.github.io/cheatsheets//js/all.min.js"></script>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', '', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

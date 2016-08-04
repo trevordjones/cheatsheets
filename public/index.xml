@@ -79,6 +79,88 @@ rails console # or rails c
     </item>
     
     <item>
+      <title>Migrations</title>
+      <link>https://trevordjones.github.io/cheatsheets/post/migrations/</link>
+      <pubDate>Tue, 02 Aug 2016 17:26:15 -0400</pubDate>
+      
+      <guid>https://trevordjones.github.io/cheatsheets/post/migrations/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;To create a database:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;rake db:create
+# Note: you only need to do this once per app
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;To create a new table in the database:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;rails generate model Product name:string description:text &#39;price:decimal{5,2}&#39;
+# DOUBLE CHECK THE GENERATED MIGRATION FILE CODE (in db/migrate folder)
+# If there are typos, you can fix them now before doing the next step
+
+rake db:migrate
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note: A description of rails database types can be found &lt;a href=&#34;http://stackoverflow.com/questions/11889048/is-there-documentation-for-the-rails-column-types&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;To make changes to existing database tables:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;rails generate migration NameDescribingTheChange
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Add code to the new migration file generated in the db/migrate folder.&lt;br /&gt;
+All available commands here: &lt;a href=&#34;http://api.rubyonrails.org/classes/ActiveRecord/Migration.html&#34;&gt;http://api.rubyonrails.org/classes/ActiveRecord/Migration.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# Add a column
+add_column :products, :image, :string
+
+# Rename a column:
+rename_column :products, :image, :photo
+# In this example, image is the old name, photo is the new name
+
+# Remove a column:
+remove_column :products, :photo, :string
+
+# Change a data type:
+change_column :products, :quantity, :integer
+# In this example, quantity will become an integer
+
+# Using decimals:
+add_column :products, :price, :decimal, precision: 5, scale: 2
+# Precision is the total number of digits, scale is the number of digits after the decimal
+# In this example, 103.42 is a valid price, 3432.21 is invalid (total digits is greater than precision)
+
+# NOTE: postgres is a bit touchy changing strings to decimals, use these two lines in a migration:
+change_column :products, :price, &amp;quot;numeric USING CAST(price AS numeric)&amp;quot;
+change_column :products, :price, :decimal, precision: 9, scale: 2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;DOUBLE CHECK YOUR MIGRATION FILE CODE&lt;br /&gt;
+If there are typos, you can fix them now before doing the next step&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;rake db:migrate
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Shortcuts for the above:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# To add a column to a table:
+rails generate migration AddImageToProducts image:string
+
+# To remove a column from a table:
+rails generate migration RemovePhotoFromProducts photo:string
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;No other shortcuts exist - if you need to rename, change, etc., you’ll need to generate an empty migration file and write the code in as described above&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;To generate sample data for database:&lt;/strong&gt;&lt;br /&gt;
+Write code in the &lt;code&gt;db/seeds.rb&lt;/code&gt; file (instead of through the rails console)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;rake db:seed
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note: If you already have sample data created from rails console or your application, you can use this gem to generate a seed file so others can reproduce it: &lt;a href=&#34;https://github.com/rroblak/seed_dump&#34;&gt;https://github.com/rroblak/seed_dump&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Terminal Commands</title>
       <link>https://trevordjones.github.io/cheatsheets/post/terminal/</link>
       <pubDate>Tue, 02 Aug 2016 17:25:54 -0400</pubDate>
@@ -313,8 +395,7 @@ $ git diff file_name
 
 &lt;p&gt;&lt;a href=&#34;https://trevordjones.github.io/cheatsheets/post/github-cheatsheet/&#34;&gt;Github&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;No page found with path or logical name &#34;migrations.md&#34;.
-&#34;&gt;Migrations&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://trevordjones.github.io/cheatsheets/post/migrations/&#34;&gt;Migrations&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://trevordjones.github.io/cheatsheets/post/rails-commands/&#34;&gt;Rails Commands&lt;/a&gt;&lt;/p&gt;
 
