@@ -64,6 +64,54 @@
                 <section class="post">
                     <header class="post-header">
 
+                        <a href="https://trevordjones.github.io/cheatsheets/post/rails-commands/" class="post-title">Rails Commands</a>
+
+                        <p class="post-meta">
+                            
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        <p>Anything below surrounded in ** is to be replaced with your own custom words!</p>
+
+<p>To create a new rails project</p>
+
+<pre><code class="language-bash">rails new *name-of-your-app* --database=postgresql
+
+# Don’t forget that to work with your app, you need to be in the correct directory! So, do:
+cd *name-of-your-app*
+
+#To create your postgres database:
+rake db:create
+
+# To run your rails app (also known as the webserver):
+rails server # or rails s
+
+#NOTE: Once your rails server is running, you will no longer be able to run commands from that terminal tab - it is being hogged by the rails server. You must create a new terminal tab (Command + T) and run your terminal commands from there.
+
+#To create a new controller: (the name of your controller must be PLURAL!)
+rails generate controller *name-of-your-controllers*
+# Example: rails generate controller recipes
+
+#To create a new model: (the name of your model must be SINGULAR!)
+rails generate model *ModelName* attribute_1 attribute_2 attribute_3 ..etc…
+#Example: rails generate model Recipe title chef prep_time:integer
+
+# After creating each model, you must enter run
+rake db:migrate
+
+#To run your rails console:
+rails console # or rails c
+</code></pre>
+
+                    </div>
+                </section>
+                
+                <h1 class="content-subhead">02 Aug 2016, 17:26</h1>
+                <section class="post">
+                    <header class="post-header">
+
                         <a href="https://trevordjones.github.io/cheatsheets/post/install-bootstrap/" class="post-title">Install Bootstrap</a>
 
                         <p class="post-meta">
@@ -378,6 +426,8 @@ $ git diff file_name
 <p><a href="https://trevordjones.github.io/cheatsheets/post/git-cheatsheet/">Git</a></p>
 
 <p><a href="https://trevordjones.github.io/cheatsheets/post/github-cheatsheet/">Github</a></p>
+
+<p><a href="https://trevordjones.github.io/cheatsheets/post/rails-commands/">Rails Commands</a></p>
 
 <p><a href="https://trevordjones.github.io/cheatsheets/post/terminal/">Terminal</a></p>
 

@@ -3,19 +3,19 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pages &middot; Rails Development</title>
+    <title>Rails Commands &middot; Rails Development</title>
 
-    <meta name="description" content="Common Commands">
+    <meta name="description" content="">
 
     <meta name="generator" content="Hugo 0.16" />
     <meta name="twitter:card" content="summary">
     
-    <meta name="twitter:title" content="Pages &middot; Rails Development">
-    <meta name="twitter:description" content="Common Commands">
+    <meta name="twitter:title" content="Rails Commands &middot; Rails Development">
+    <meta name="twitter:description" content="">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Pages &middot; Rails Development">
-    <meta property="og:description" content="Common Commands">
+    <meta property="og:title" content="Rails Commands &middot; Rails Development">
+    <meta property="og:description" content="">
 
     <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
@@ -59,44 +59,55 @@
         <div>
             
             <div class="posts">
-                
-                <h1 class="content-subhead">01 Jan 0001, 00:00</h1>
+                <h1 class="content-subhead">02 Aug 2016, 17:26</h1>
                 <section class="post">
                     <header class="post-header">
 
-                        <a href="https://trevordjones.github.io/cheatsheets/page/summary/" class="post-title"></a>
+                        <a href="https://trevordjones.github.io/cheatsheets/post/rails-commands/" class="post-title">Rails Commands</a>
 
                         <p class="post-meta">
                             
                             
                         </p>
                     </header>
-
+                    
                     <div class="post-description">
-                        
+                        <p>Anything below surrounded in ** is to be replaced with your own custom words!</p>
 
-<h2 id="cheatsheets-listed-alphabetically">Cheatsheets listed alphabetically</h2>
+<p>To create a new rails project</p>
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/active-record-methods/">Active Record Methods</a></p>
+<pre><code class="language-bash">rails new *name-of-your-app* --database=postgresql
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/active-record-queries/">Active Record Queries</a></p>
+# Don’t forget that to work with your app, you need to be in the correct directory! So, do:
+cd *name-of-your-app*
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/install-bootstrap/">Bootstrap, Install</a></p>
+#To create your postgres database:
+rake db:create
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/git-cheatsheet/">Git</a></p>
+# To run your rails app (also known as the webserver):
+rails server # or rails s
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/github-cheatsheet/">Github</a></p>
+#NOTE: Once your rails server is running, you will no longer be able to run commands from that terminal tab - it is being hogged by the rails server. You must create a new terminal tab (Command + T) and run your terminal commands from there.
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/rails-commands/">Rails Commands</a></p>
+#To create a new controller: (the name of your controller must be PLURAL!)
+rails generate controller *name-of-your-controllers*
+# Example: rails generate controller recipes
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/terminal/">Terminal</a></p>
+#To create a new model: (the name of your model must be SINGULAR!)
+rails generate model *ModelName* attribute_1 attribute_2 attribute_3 ..etc…
+#Example: rails generate model Recipe title chef prep_time:integer
+
+# After creating each model, you must enter run
+rake db:migrate
+
+#To run your rails console:
+rails console # or rails c
+</code></pre>
 
                     </div>
+                    
                 </section>
-                
             </div>
-            
-
             <div class="footer">
     <div class="pure-menu pure-menu-horizontal pure-menu-open">
         <ul>
@@ -109,6 +120,7 @@
         </div>
     </div>
 </div>
+
 
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
