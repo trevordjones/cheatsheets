@@ -6,8 +6,174 @@
     <description>Recent content on Rails Development</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 02 Aug 2016 17:26:43 -0400</lastBuildDate>
+    <lastBuildDate>Thu, 04 Aug 2016 17:45:55 -0400</lastBuildDate>
     <atom:link href="https://trevordjones.github.io/cheatsheets/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Atom Shortcuts</title>
+      <link>https://trevordjones.github.io/cheatsheets/post/atom-shortcuts/</link>
+      <pubDate>Thu, 04 Aug 2016 17:45:55 -0400</pubDate>
+      
+      <guid>https://trevordjones.github.io/cheatsheets/post/atom-shortcuts/</guid>
+      <description>
+
+&lt;h3 id=&#34;editing&#34;&gt;Editing&lt;/h3&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Command&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;What it do&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cmd-,&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;opens the preferences page&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cmd-enter&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;start new line below current line. Does not matter where cursor is&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cmd-shift-enter&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;start new line above current line. Does not matter where cursor is&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cmd-shift-right&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Highlight all text to the left of cursor&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cmd-shift-right&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Highlight all text to the left of cursor&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cmd-shift-right&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Highlight all text to the left of cursor&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cmd-shift-right&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Highlight all text to the left of cursor&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cmd-shift-left&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Highlight all text to the right of cursor&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cmd-shift-left&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Highlight all text to the right of cursor&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ctrl-cmd-up&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;swaps the current line with the line above&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ctrl-cmd-up&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;swaps the current line with the line below&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cmd-t&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;open &amp;ldquo;fuzzy finder&amp;rdquo;. From here you can search for files in the opened directory&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cmd-c&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;copy&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cmd-c&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;with no text selected &amp;ndash; copies the entire line where the cursor is&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cmd-p&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;paste&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cmd-shift-d&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;duplicate line where cursor is&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ctrl-shift-k&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;deletes the line where the cursor is&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cmd-d&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;highlight current word - if you continue to &lt;code&gt;cmd-d&lt;/code&gt;, it will start to select each word that is the same. This gives you multiple cursors for editing&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ctrl-m&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;go to matching bracket&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cmd-/&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;toggle comment&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;navigating-file&#34;&gt;Navigating File&lt;/h3&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Command&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;What it do&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cmd-right&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;bring cursor to end of the line&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cmd-left&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;bring cursor to beginning of the line&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cmd+\&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;toggle tree view (thing on the left of the editor that shows your files)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cmd-w&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;close current window&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+    </item>
     
     <item>
       <title>Rails Commands</title>
