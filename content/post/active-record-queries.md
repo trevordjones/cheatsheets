@@ -29,6 +29,9 @@ Model.where(attribute: 'value')
 Model.where('attribute > ?', 'value')
 # returns all records where the attribute is greater than the given value
 
+Model.where(attribute: 'value', other_attribute: 'other_value')
+# returns all records where the attribute is equal to value and other_attribute is equal to other_value
+
 Model.where('attribute LIKE ?', '%value%')
 # returns all records where the attribute is similar to the value. The % sign on each side means anything can be before or after - very general search
 

@@ -4,6 +4,10 @@
 
 [Active Record Queries]({{< ref "active-record-queries.md" >}})
 
+[Atom Shortcuts]({{< ref "atom-shortcuts.md" >}})
+
+[Authentication]({{< ref "authentication.md" >}})
+
 [Bootstrap, Install]({{< ref "install-bootstrap.md">}})
 
 [Git]({{< ref "git-cheatsheet.md">}})
