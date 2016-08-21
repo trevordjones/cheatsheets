@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pages &middot; Rails Development</title>
+    <title>Posts &middot; Rails Development</title>
 
     <meta name="description" content="Common Commands">
 
     <meta name="generator" content="Hugo 0.16" />
     <meta name="twitter:card" content="summary">
     
-    <meta name="twitter:title" content="Pages &middot; Rails Development">
+    <meta name="twitter:title" content="Posts &middot; Rails Development">
     <meta name="twitter:description" content="Common Commands">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Pages &middot; Rails Development">
+    <meta property="og:title" content="Posts &middot; Rails Development">
     <meta property="og:description" content="Common Commands">
 
     <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
@@ -60,11 +60,11 @@
             
             <div class="posts">
                 
-                <h1 class="content-subhead">01 Jan 0001, 00:00</h1>
+                <h1 class="content-subhead">31 Jul 2016, 15:37</h1>
                 <section class="post">
                     <header class="post-header">
 
-                        <a href="https://trevordjones.github.io/cheatsheets/page/summary/" class="post-title"></a>
+                        <a href="https://trevordjones.github.io/cheatsheets/post/git-cheatsheet/" class="post-title">Git Cheatsheet</a>
 
                         <p class="post-meta">
                             
@@ -73,37 +73,48 @@
                     </header>
 
                     <div class="post-description">
-                        
+                        <p>Tell git to track the folder you are currently in (be sure to <code>cd</code> into it):</p>
 
-<h2 id="cheatsheets-listed-alphabetically">Cheatsheets listed alphabetically</h2>
+<pre><code class="language-bash">$ git init
+</code></pre>
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/active-record-methods/">Active Record Methods</a></p>
+<p>Only need to do this once.</p>
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/active-record-queries/">Active Record Queries</a></p>
+<p>Made changes to your project:</p>
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/atom-shortcuts/">Atom Shortcuts</a></p>
+<pre><code class="language-bash">$ git add --all
+$ git commit -m &quot;your message&quot;
+</code></pre>
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/authentication/">Authentication</a></p>
+<p>Here are some extra commands you can play with:</p>
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/install-bootstrap/">Bootstrap, Install</a></p>
+<pre><code class="language-bash">$ git status
+# see which files are being tracked and which are not
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/git-cheatsheet/">Git</a></p>
+$ git log
+# Check your log of commits
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/github-cheatsheet/">Github</a></p>
-
-<p><a href="https://trevordjones.github.io/cheatsheets/post/migrations/">Migrations</a></p>
-
-<p><a href="https://trevordjones.github.io/cheatsheets/post/shutdown-restart-postgres/">Postgres, shutting down</a></p>
-
-<p><a href="https://trevordjones.github.io/cheatsheets/post/rails-commands/">Rails Commands</a></p>
-
-<p><a href="https://trevordjones.github.io/cheatsheets/post/terminal/">Terminal</a></p>
+$ git diff file_name
+# See the changes of the files
+</code></pre>
 
                     </div>
                 </section>
                 
             </div>
             
+<div class="pagination">
+  <nav role="pagination" class="post-list-pagination">
+      
+      <a href="/post/" class="post-list-pagination-item pure-button post-list-pagination-item-prev">
+        <i class="fa fa-angle-double-left"></i>&nbsp;Newer
+      </a>
+      
+    <span class="post-list-pagination-item post-list-pagination-item-current">Page 2 of 2</span>
+    
+  </nav>
+</div>
+
 
             <div class="footer">
     <div class="pure-menu pure-menu-horizontal pure-menu-open">

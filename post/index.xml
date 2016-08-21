@@ -6,8 +6,41 @@
     <description>Recent content in Posts on Rails Development</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 04 Aug 2016 17:45:55 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 21 Aug 2016 19:24:20 -0400</lastBuildDate>
     <atom:link href="https://trevordjones.github.io/cheatsheets/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Shutdown Restart Postgres</title>
+      <link>https://trevordjones.github.io/cheatsheets/post/shutdown-restart-postgres/</link>
+      <pubDate>Sun, 21 Aug 2016 19:24:20 -0400</pubDate>
+      
+      <guid>https://trevordjones.github.io/cheatsheets/post/shutdown-restart-postgres/</guid>
+      <description>&lt;p&gt;You&amp;rsquo;ve probably all gotten the error from Postgres&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;could not connect to server: No such file or directory
+Is the server running locally and accepting
+connections on Unix domain socket &amp;quot;/tmp/.s.PGSQL.5432&amp;quot;?
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This happens when you do not shut down your running Postgres properly. This can happen when you shut down your computer or when you just close the terminal. You can prevent this by first shutting down Postgres before shutting down your computer:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ brew services stop postgres
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then the next time you open your terminal, you can run:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ brew services start postgres
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you shut down before you had a chance to close Postgres, you&amp;rsquo;ll need to remove the &lt;code&gt;postmaster.pid&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cd /usr/local/var/postgres
+$ rm -rf postmaster.pid
+# Now you can start Postgres again
+$ brew services start postgres
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>Atom Shortcuts</title>

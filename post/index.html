@@ -60,6 +60,47 @@
             
             <div class="posts">
                 
+                <h1 class="content-subhead">21 Aug 2016, 19:24</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="https://trevordjones.github.io/cheatsheets/post/shutdown-restart-postgres/" class="post-title">Shutdown Restart Postgres</a>
+
+                        <p class="post-meta">
+                            
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        <p>You&rsquo;ve probably all gotten the error from Postgres</p>
+
+<pre><code class="language-bash">could not connect to server: No such file or directory
+Is the server running locally and accepting
+connections on Unix domain socket &quot;/tmp/.s.PGSQL.5432&quot;?
+</code></pre>
+
+<p>This happens when you do not shut down your running Postgres properly. This can happen when you shut down your computer or when you just close the terminal. You can prevent this by first shutting down Postgres before shutting down your computer:</p>
+
+<pre><code class="language-bash">$ brew services stop postgres
+</code></pre>
+
+<p>Then the next time you open your terminal, you can run:</p>
+
+<pre><code class="language-bash">$ brew services start postgres
+</code></pre>
+
+<p>If you shut down before you had a chance to close Postgres, you&rsquo;ll need to remove the <code>postmaster.pid</code> file.</p>
+
+<pre><code class="language-bash">$ cd /usr/local/var/postgres
+$ rm -rf postmaster.pid
+# Now you can start Postgres again
+$ brew services start postgres
+</code></pre>
+
+                    </div>
+                </section>
+                
                 <h1 class="content-subhead">04 Aug 2016, 17:45</h1>
                 <section class="post">
                     <header class="post-header">
@@ -821,49 +862,20 @@ $ git push origin master
                     </div>
                 </section>
                 
-                <h1 class="content-subhead">31 Jul 2016, 15:37</h1>
-                <section class="post">
-                    <header class="post-header">
-
-                        <a href="https://trevordjones.github.io/cheatsheets/post/git-cheatsheet/" class="post-title">Git Cheatsheet</a>
-
-                        <p class="post-meta">
-                            
-                            
-                        </p>
-                    </header>
-
-                    <div class="post-description">
-                        <p>Tell git to track the folder you are currently in (be sure to <code>cd</code> into it):</p>
-
-<pre><code class="language-bash">$ git init
-</code></pre>
-
-<p>Only need to do this once.</p>
-
-<p>Made changes to your project:</p>
-
-<pre><code class="language-bash">$ git add --all
-$ git commit -m &quot;your message&quot;
-</code></pre>
-
-<p>Here are some extra commands you can play with:</p>
-
-<pre><code class="language-bash">$ git status
-# see which files are being tracked and which are not
-
-$ git log
-# Check your log of commits
-
-$ git diff file_name
-# See the changes of the files
-</code></pre>
-
-                    </div>
-                </section>
-                
             </div>
             
+<div class="pagination">
+  <nav role="pagination" class="post-list-pagination">
+      
+    <span class="post-list-pagination-item post-list-pagination-item-current">Page 1 of 2</span>
+    
+      <a href="/post/page/2/" class="post-list-pagination-item pure-button post-list-pagination-item-next">
+        Older&nbsp;<i class="fa fa-angle-double-right"></i>
+      </a>
+    
+  </nav>
+</div>
+
 
             <div class="footer">
     <div class="pure-menu pure-menu-horizontal pure-menu-open">
