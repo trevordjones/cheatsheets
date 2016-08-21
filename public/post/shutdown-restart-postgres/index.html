@@ -3,19 +3,19 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pages &middot; Rails Development</title>
+    <title>Shutdown Restart Postgres &middot; Rails Development</title>
 
-    <meta name="description" content="Common Commands">
+    <meta name="description" content="">
 
     <meta name="generator" content="Hugo 0.16" />
     <meta name="twitter:card" content="summary">
     
-    <meta name="twitter:title" content="Pages &middot; Rails Development">
-    <meta name="twitter:description" content="Common Commands">
+    <meta name="twitter:title" content="Shutdown Restart Postgres &middot; Rails Development">
+    <meta name="twitter:description" content="">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Pages &middot; Rails Development">
-    <meta property="og:description" content="Common Commands">
+    <meta property="og:title" content="Shutdown Restart Postgres &middot; Rails Development">
+    <meta property="og:description" content="">
 
     <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
@@ -59,52 +59,48 @@
         <div>
             
             <div class="posts">
-                
-                <h1 class="content-subhead">01 Jan 0001, 00:00</h1>
+                <h1 class="content-subhead">21 Aug 2016, 19:24</h1>
                 <section class="post">
                     <header class="post-header">
 
-                        <a href="https://trevordjones.github.io/cheatsheets/page/summary/" class="post-title"></a>
+                        <a href="https://trevordjones.github.io/cheatsheets/post/shutdown-restart-postgres/" class="post-title">Shutdown Restart Postgres</a>
 
                         <p class="post-meta">
                             
                             
                         </p>
                     </header>
-
+                    
                     <div class="post-description">
-                        
+                        <p>You&rsquo;ve probably all gotten the error from Postgres</p>
 
-<h2 id="cheatsheets-listed-alphabetically">Cheatsheets listed alphabetically</h2>
+<pre><code class="language-bash">could not connect to server: No such file or directory
+Is the server running locally and accepting
+connections on Unix domain socket &quot;/tmp/.s.PGSQL.5432&quot;?
+</code></pre>
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/active-record-methods/">Active Record Methods</a></p>
+<p>This happens when you do not shut down your running Postgres properly. This can happen when you shut down your computer or when you just close the terminal. You can prevent this by first shutting down Postgres before shutting down your computer:</p>
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/active-record-queries/">Active Record Queries</a></p>
+<pre><code class="language-bash">$ brew services stop postgres
+</code></pre>
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/atom-shortcuts/">Atom Shortcuts</a></p>
+<p>Then the next time you open your terminal, you can run:</p>
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/authentication/">Authentication</a></p>
+<pre><code class="language-bash">$ brew services start postgres
+</code></pre>
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/install-bootstrap/">Bootstrap, Install</a></p>
+<p>If you shut down before you had a chance to close Postgres, you&rsquo;ll need to remove the <code>postmaster.pid</code> file.</p>
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/git-cheatsheet/">Git</a></p>
-
-<p><a href="https://trevordjones.github.io/cheatsheets/post/github-cheatsheet/">Github</a></p>
-
-<p><a href="https://trevordjones.github.io/cheatsheets/post/migrations/">Migrations</a></p>
-
-<p><a href="https://trevordjones.github.io/cheatsheets/post/shutdown-restart-postgres/">Postgres, shutting down</a></p>
-
-<p><a href="https://trevordjones.github.io/cheatsheets/post/rails-commands/">Rails Commands</a></p>
-
-<p><a href="https://trevordjones.github.io/cheatsheets/post/terminal/">Terminal</a></p>
+<pre><code class="language-bash">$ cd /usr/local/var/postgres
+$ rm -rf postmaster.pid
+# Now you can start Postgres again
+$ brew services start postgres
+</code></pre>
 
                     </div>
+                    
                 </section>
-                
             </div>
-            
-
             <div class="footer">
     <div class="pure-menu pure-menu-horizontal pure-menu-open">
         <ul>
@@ -117,6 +113,7 @@
         </div>
     </div>
 </div>
+
 
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

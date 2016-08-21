@@ -16,6 +16,8 @@
 
 [Migrations]({{<ref "migrations.md" >}})
 
+[Postgres, shutting down]({{< ref "shutdown-restart-postgres.md" >}})
+
 [Rails Commands]({{< ref "rails-commands.md" >}})
 
 [Terminal]({{< ref "terminal.md" >}})
