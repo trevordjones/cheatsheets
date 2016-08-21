@@ -10,7 +10,7 @@
     <atom:link href="https://trevordjones.github.io/cheatsheets/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Shutdown Restart Postgres</title>
+      <title>Fixing Postgres Error</title>
       <link>https://trevordjones.github.io/cheatsheets/post/shutdown-restart-postgres/</link>
       <pubDate>Sun, 21 Aug 2016 19:24:20 -0400</pubDate>
       
