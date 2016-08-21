@@ -1,7 +1,7 @@
 +++
 date = "2016-08-21T19:24:20-04:00"
 draft = false
-title = "Shutdown Restart Postgres"
+title = "Fixing Postgres Error"
 
 +++
 
