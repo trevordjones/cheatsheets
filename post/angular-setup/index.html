@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> &middot; Rails Development</title>
+    <title>Angular Setup &middot; Rails Development</title>
 
     <meta name="description" content="">
 
     <meta name="generator" content="Hugo 0.16" />
     <meta name="twitter:card" content="summary">
     
-    <meta name="twitter:title" content=" &middot; Rails Development">
+    <meta name="twitter:title" content="Angular Setup &middot; Rails Development">
     <meta name="twitter:description" content="">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content=" &middot; Rails Development">
+    <meta property="og:title" content="Angular Setup &middot; Rails Development">
     <meta property="og:description" content="">
 
     <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
@@ -59,11 +59,11 @@
         <div>
             
             <div class="posts">
-                <h1 class="content-subhead">01 Jan 0001, 00:00</h1>
+                <h1 class="content-subhead">07 Sep 2016, 12:44</h1>
                 <section class="post">
                     <header class="post-header">
 
-                        <a href="https://trevordjones.github.io/cheatsheets/page/summary/" class="post-title"></a>
+                        <a href="https://trevordjones.github.io/cheatsheets/post/angular-setup/" class="post-title">Angular Setup</a>
 
                         <p class="post-meta">
                             
@@ -74,31 +74,64 @@
                     <div class="post-description">
                         
 
-<h2 id="cheatsheets-listed-alphabetically">Cheatsheets listed alphabetically</h2>
+<h3 id="setup-angular-in-your-rails-app">Setup Angular in your Rails App</h3>
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/active-record-methods/">Active Record Methods</a></p>
+<ol>
+<li>Go to (<a href="https://angularjs.org)[https://angularjs.org">https://angularjs.org)[https://angularjs.org</a>] and download the compressed angular.js file.</li>
+<li>Copy that file into <code>vendor/assets/javascripts</code> folder.</li>
+<li>Add <code>//= require angular</code> to the asset pipeline (i.e. <code>app/assets/javascripts/application.js</code>) on the line before <code>//= require_tree .</code>.</li>
+<li>Get rid of the turbolinks line in that file, which can cause problems down the road.</li>
+<li>Create a new file inside <code>app/assets/javascripts</code> called <code>app.js</code>.</li>
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/active-record-queries/">Active Record Queries</a></p>
+<li><p>Add the following:</p>
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/angular-setup/">Angular, Setup in Rails</a></p>
+<pre><code class="language-javascript">(function() {
+  &quot;use strict&quot;;
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/atom-shortcuts/">Atom Shortcuts</a></p>
+  angular.module(&quot;app&quot;, []);
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/authentication/">Authentication</a></p>
+})();
+</code></pre></li>
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/install-bootstrap/">Bootstrap, Install</a></p>
+<li><p>Back to <code>app/assets/javascripts/application.js</code>. Below <code>require angular</code> add <code>//= require app</code>. It must be below Angular.</p></li>
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/git-cheatsheet/">Git</a></p>
+<li><p>Add to your html where you want to inject Angular</p>
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/github-cheatsheet/">Github</a></p>
+<pre><code class="language-html">&lt;div ng-app=&quot;app&quot;&gt;
+{{ 1 + 1 }}
+&lt;/div&gt;
+</code></pre></li>
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/migrations/">Migrations</a></p>
+<li><p>Go to that page in the browser and see that the number 2 appears. If so, Angular is properly installed!</p></li>
+</ol>
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/shutdown-restart-postgres/">Postgres, shutting down</a></p>
+<h2 id="setup-an-angular-controller">Setup an Angular Controller</h2>
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/rails-commands/">Rails Commands</a></p>
+<ol>
+<li>In <code>app/assets/javascripts/controllers</code> add a controller file called <code>test_ctrl.js</code>.</li>
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/terminal/">Terminal</a></p>
+<li><p>Add the following:</p>
+
+<pre><code class="language-javascript">(function () {
+  &quot;use strict&quot;;
+
+  angular.module(&quot;app&quot;).controller(&quot;testCtrl&quot;, function($scope) {
+    $scope.message = &quot;Hello!&quot;;
+  });
+})();
+</code></pre></li>
+
+<li><p>Then inside your html file where you included the Angular app:</p>
+
+<pre><code class="language-html">&lt;div ng-app=&quot;app&quot;&gt;
+  &lt;div ng-controller=&quot;stuffCtrl&quot;&gt;
+    &lt;p&gt;{{ message }}&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre></li>
+
+<li><p>Check in your browser that you have the &ldquo;Hello!&rdquo; message appearing.</p></li>
+</ol>
 
                     </div>
                     

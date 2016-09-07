@@ -6,8 +6,77 @@
     <description>Recent content on Rails Development</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 21 Aug 2016 19:24:20 -0400</lastBuildDate>
+    <lastBuildDate>Wed, 07 Sep 2016 12:44:51 -0400</lastBuildDate>
     <atom:link href="https://trevordjones.github.io/cheatsheets/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Angular Setup</title>
+      <link>https://trevordjones.github.io/cheatsheets/post/angular-setup/</link>
+      <pubDate>Wed, 07 Sep 2016 12:44:51 -0400</pubDate>
+      
+      <guid>https://trevordjones.github.io/cheatsheets/post/angular-setup/</guid>
+      <description>
+
+&lt;h3 id=&#34;setup-angular-in-your-rails-app&#34;&gt;Setup Angular in your Rails App&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Go to (&lt;a href=&#34;https://angularjs.org)[https://angularjs.org&#34;&gt;https://angularjs.org)[https://angularjs.org&lt;/a&gt;] and download the compressed angular.js file.&lt;/li&gt;
+&lt;li&gt;Copy that file into &lt;code&gt;vendor/assets/javascripts&lt;/code&gt; folder.&lt;/li&gt;
+&lt;li&gt;Add &lt;code&gt;//= require angular&lt;/code&gt; to the asset pipeline (i.e. &lt;code&gt;app/assets/javascripts/application.js&lt;/code&gt;) on the line before &lt;code&gt;//= require_tree .&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Get rid of the turbolinks line in that file, which can cause problems down the road.&lt;/li&gt;
+&lt;li&gt;Create a new file inside &lt;code&gt;app/assets/javascripts&lt;/code&gt; called &lt;code&gt;app.js&lt;/code&gt;.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Add the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;(function() {
+  &amp;quot;use strict&amp;quot;;
+
+  angular.module(&amp;quot;app&amp;quot;, []);
+
+})();
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Back to &lt;code&gt;app/assets/javascripts/application.js&lt;/code&gt;. Below &lt;code&gt;require angular&lt;/code&gt; add &lt;code&gt;//= require app&lt;/code&gt;. It must be below Angular.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Add to your html where you want to inject Angular&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;div ng-app=&amp;quot;app&amp;quot;&amp;gt;
+{{ 1 + 1 }}
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Go to that page in the browser and see that the number 2 appears. If so, Angular is properly installed!&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;setup-an-angular-controller&#34;&gt;Setup an Angular Controller&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;In &lt;code&gt;app/assets/javascripts/controllers&lt;/code&gt; add a controller file called &lt;code&gt;test_ctrl.js&lt;/code&gt;.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Add the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;(function () {
+  &amp;quot;use strict&amp;quot;;
+
+  angular.module(&amp;quot;app&amp;quot;).controller(&amp;quot;testCtrl&amp;quot;, function($scope) {
+    $scope.message = &amp;quot;Hello!&amp;quot;;
+  });
+})();
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Then inside your html file where you included the Angular app:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;div ng-app=&amp;quot;app&amp;quot;&amp;gt;
+  &amp;lt;div ng-controller=&amp;quot;stuffCtrl&amp;quot;&amp;gt;
+    &amp;lt;p&amp;gt;{{ message }}&amp;lt;/p&amp;gt;
+  &amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Check in your browser that you have the &amp;ldquo;Hello!&amp;rdquo; message appearing.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
     
     <item>
       <title>Fixing Postgres Error</title>
@@ -777,6 +846,8 @@ $ git diff file_name
 &lt;p&gt;&lt;a href=&#34;https://trevordjones.github.io/cheatsheets/post/active-record-methods/&#34;&gt;Active Record Methods&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://trevordjones.github.io/cheatsheets/post/active-record-queries/&#34;&gt;Active Record Queries&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://trevordjones.github.io/cheatsheets/post/angular-setup/&#34;&gt;Angular, Setup in Rails&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://trevordjones.github.io/cheatsheets/post/atom-shortcuts/&#34;&gt;Atom Shortcuts&lt;/a&gt;&lt;/p&gt;
 
