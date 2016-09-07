@@ -4,6 +4,8 @@
 
 [Active Record Queries]({{< ref "active-record-queries.md" >}})
 
+[Angular, Setup in Rails]({{< ref "angular-setup.md" >}})
+
 [Atom Shortcuts]({{< ref "atom-shortcuts.md" >}})
 
 [Authentication]({{< ref "authentication.md" >}})
