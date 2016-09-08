@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> &middot; Rails Development</title>
+    <title>Create an API &middot; Rails Development</title>
 
     <meta name="description" content="">
 
     <meta name="generator" content="Hugo 0.16" />
     <meta name="twitter:card" content="summary">
     
-    <meta name="twitter:title" content=" &middot; Rails Development">
+    <meta name="twitter:title" content="Create an API &middot; Rails Development">
     <meta name="twitter:description" content="">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content=" &middot; Rails Development">
+    <meta property="og:title" content="Create an API &middot; Rails Development">
     <meta property="og:description" content="">
 
     <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
@@ -59,11 +59,11 @@
         <div>
             
             <div class="posts">
-                <h1 class="content-subhead">01 Jan 0001, 00:00</h1>
+                <h1 class="content-subhead">08 Sep 2016, 16:43</h1>
                 <section class="post">
                     <header class="post-header">
 
-                        <a href="https://trevordjones.github.io/cheatsheets/page/summary/" class="post-title"></a>
+                        <a href="https://trevordjones.github.io/cheatsheets/post/create-an-api/" class="post-title">Create an API</a>
 
                         <p class="post-meta">
                             
@@ -72,37 +72,42 @@
                     </header>
                     
                     <div class="post-description">
-                        
+                        <ul>
+<li>Create brand new app <code>rails new name-of-api -T -d postgresql</code></li>
+<li><code>rake db:create</code></li>
+<li><code>rails g model Person first_name last_name email phone</code></li>
+<li><code>rake db:migrate</code></li>
+<li><code>rails g controller api/v1/people</code></li>
+<li>Add <a href="https://github.com/stympy/faker">Faker gem</a></li>
+<li><code>bundle</code></li>
 
-<h2 id="cheatsheets-listed-alphabetically">Cheatsheets listed alphabetically</h2>
+<li><p>Create a seed file</p>
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/active-record-methods/">Active Record Methods</a></p>
+<pre><code class="language-ruby">100.times do
+  Person.create(:prefix =&gt; Faker::Name.prefix,
+                :first_name =&gt; Faker::Name.first_name,
+                :middle_name =&gt; Faker::Name.first_name,
+                :last_name =&gt; Faker::Name.last_name,
+                :suffix =&gt; Faker::Name.suffix,
+                :email =&gt; Faker::Internet.email,
+                :phone =&gt; Faker::PhoneNumber.phone_number)
+end
+</code></pre></li>
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/active-record-queries/">Active Record Queries</a></p>
+<li><p><code>rake db:seed</code></p></li>
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/angular-setup/">Angular, Setup in Rails</a></p>
+<li><p>in <code>routes.rb</code> file, add RESTful routes for people</p></li>
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/create-an-api/">API, Create</a></p>
+<li><p>Create an <code>index</code> action in your controller</p></li>
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/atom-shortcuts/">Atom Shortcuts</a></p>
+<li><p>Create an <code>index.json.jbuilder</code> file in your corresponding views</p></li>
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/authentication/">Authentication</a></p>
+<li><p>Follow <a href="https://github.com/rails/jbuilder">jbuilder documentation</a> in your view</p></li>
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/install-bootstrap/">Bootstrap, Install</a></p>
+<li><p>Start your server and view your JSON!</p></li>
 
-<p><a href="https://trevordjones.github.io/cheatsheets/post/git-cheatsheet/">Git</a></p>
-
-<p><a href="https://trevordjones.github.io/cheatsheets/post/github-cheatsheet/">Github</a></p>
-
-<p><a href="https://trevordjones.github.io/cheatsheets/post/migrations/">Migrations</a></p>
-
-<p><a href="https://trevordjones.github.io/cheatsheets/post/shutdown-restart-postgres/">Postgres, shutting down</a></p>
-
-<p><a href="https://trevordjones.github.io/cheatsheets/post/rails-commands/">Rails Commands</a></p>
-
-<p><a href="https://trevordjones.github.io/cheatsheets/post/terminal/">Terminal</a></p>
-
-<p><a href="https://trevordjones.github.io/cheatsheets/post/install-theme-in-rails/">Theme, Install in Rails</a></p>
+<li><p>Add any other RESTful actions that are needed for your API</p></li>
+</ul>
 
                     </div>
                     

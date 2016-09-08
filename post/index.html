@@ -60,6 +60,59 @@
             
             <div class="posts">
                 
+                <h1 class="content-subhead">08 Sep 2016, 16:43</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="https://trevordjones.github.io/cheatsheets/post/create-an-api/" class="post-title">Create an API</a>
+
+                        <p class="post-meta">
+                            
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        <ul>
+<li>Create brand new app <code>rails new name-of-api -T -d postgresql</code></li>
+<li><code>rake db:create</code></li>
+<li><code>rails g model Person first_name last_name email phone</code></li>
+<li><code>rake db:migrate</code></li>
+<li><code>rails g controller api/v1/people</code></li>
+<li>Add <a href="https://github.com/stympy/faker">Faker gem</a></li>
+<li><code>bundle</code></li>
+
+<li><p>Create a seed file</p>
+
+<pre><code class="language-ruby">100.times do
+  Person.create(:prefix =&gt; Faker::Name.prefix,
+                :first_name =&gt; Faker::Name.first_name,
+                :middle_name =&gt; Faker::Name.first_name,
+                :last_name =&gt; Faker::Name.last_name,
+                :suffix =&gt; Faker::Name.suffix,
+                :email =&gt; Faker::Internet.email,
+                :phone =&gt; Faker::PhoneNumber.phone_number)
+end
+</code></pre></li>
+
+<li><p><code>rake db:seed</code></p></li>
+
+<li><p>in <code>routes.rb</code> file, add RESTful routes for people</p></li>
+
+<li><p>Create an <code>index</code> action in your controller</p></li>
+
+<li><p>Create an <code>index.json.jbuilder</code> file in your corresponding views</p></li>
+
+<li><p>Follow <a href="https://github.com/rails/jbuilder">jbuilder documentation</a> in your view</p></li>
+
+<li><p>Start your server and view your JSON!</p></li>
+
+<li><p>Add any other RESTful actions that are needed for your API</p></li>
+</ul>
+
+                    </div>
+                </section>
+                
                 <h1 class="content-subhead">07 Sep 2016, 17:45</h1>
                 <section class="post">
                     <header class="post-header">
@@ -83,6 +136,7 @@
 <li>Look through the <code>index.html</code> file to see their <code>link</code> tags for stylesheets. This will also tell you which ones they are using.</li>
 <li>You will not need to include their bootstrap.css file - use the gem to use Bootstrap.</li>
 <li>If they are using Font Awesome, you will also not have to include that. Use the <code>font-awesome-rails</code> gem instead.</li>
+<li>Check to see if they have classes/ids on their <code>&lt;body&gt;</code> tag. This is true for anything though - make sure class and id names are matching up with what they have.</li>
 </ol>
 
 <h2 id="integrate-into-your-app">Integrate into your App</h2>
@@ -869,58 +923,6 @@ class ApplicationController &lt; ActionController::Base
 end
 </code></pre></li>
 </ol>
-
-                    </div>
-                </section>
-                
-                <h1 class="content-subhead">02 Aug 2016, 17:25</h1>
-                <section class="post">
-                    <header class="post-header">
-
-                        <a href="https://trevordjones.github.io/cheatsheets/post/active-record-queries/" class="post-title">Active Record Queries</a>
-
-                        <p class="post-meta">
-                            
-                            
-                        </p>
-                    </header>
-
-                    <div class="post-description">
-                        <p>Substitue &ldquo;Model&rdquo; with your model:</p>
-
-<pre><code class="language-ruby">Model.first
-# find the first record
-
-Model.last
-# find the last record
-
-Model.find_by(attribute: 'value')
-# find the record by a specific attribute
-
-Model.order(:attribute)
-# order the records by the attribute - ascending is default
-
-Model.order(:attribute :desc)
-# order the records by the attribute, use descending order
-
-Model.where(attribute: 'value')
-# returns all records where the attribute equals the given value
-
-Model.where('attribute &gt; ?', 'value')
-# returns all records where the attribute is greater than the given value
-
-Model.where(attribute: 'value', other_attribute: 'other_value')
-# returns all records where the attribute is equal to value and other_attribute is equal to other_value
-
-Model.where('attribute LIKE ?', '%value%')
-# returns all records where the attribute is similar to the value. The % sign on each side means anything can be before or after - very general search
-
-Model.where('attribute LIKE ? AND other = ?', '%value%', 'other_value')
-# returns all records where the attribute is similar to the value AND other is equal to the other value
-
-Model.where('attribute LIKE? OR other = ?', '%value%', 'other_value')
-# returns all records where the attribute is similar to the value OR other is equal the other value
-</code></pre>
 
                     </div>
                 </section>
