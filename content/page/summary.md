@@ -6,6 +6,8 @@
 
 [Angular, Setup in Rails]({{< ref "angular-setup.md" >}})
 
+[API, Create]({{< ref "create-an-api.md" >}})
+
 [Atom Shortcuts]({{< ref "atom-shortcuts.md" >}})
 
 [Authentication]({{< ref "authentication.md" >}})

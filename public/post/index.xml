@@ -6,8 +6,53 @@
     <description>Recent content in Posts on Rails Development</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 07 Sep 2016 17:45:32 -0400</lastBuildDate>
+    <lastBuildDate>Thu, 08 Sep 2016 16:43:01 -0400</lastBuildDate>
     <atom:link href="https://trevordjones.github.io/cheatsheets/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Create an API</title>
+      <link>https://trevordjones.github.io/cheatsheets/post/create-an-api/</link>
+      <pubDate>Thu, 08 Sep 2016 16:43:01 -0400</pubDate>
+      
+      <guid>https://trevordjones.github.io/cheatsheets/post/create-an-api/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;Create brand new app &lt;code&gt;rails new name-of-api -T -d postgresql&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;rake db:create&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;rails g model Person first_name last_name email phone&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;rake db:migrate&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;rails g controller api/v1/people&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Add &lt;a href=&#34;https://github.com/stympy/faker&#34;&gt;Faker gem&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;bundle&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Create a seed file&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;100.times do
+  Person.create(:prefix =&amp;gt; Faker::Name.prefix,
+                :first_name =&amp;gt; Faker::Name.first_name,
+                :middle_name =&amp;gt; Faker::Name.first_name,
+                :last_name =&amp;gt; Faker::Name.last_name,
+                :suffix =&amp;gt; Faker::Name.suffix,
+                :email =&amp;gt; Faker::Internet.email,
+                :phone =&amp;gt; Faker::PhoneNumber.phone_number)
+end
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;rake db:seed&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;in &lt;code&gt;routes.rb&lt;/code&gt; file, add RESTful routes for people&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Create an &lt;code&gt;index&lt;/code&gt; action in your controller&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Create an &lt;code&gt;index.json.jbuilder&lt;/code&gt; file in your corresponding views&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Follow &lt;a href=&#34;https://github.com/rails/jbuilder&#34;&gt;jbuilder documentation&lt;/a&gt; in your view&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Start your server and view your JSON!&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Add any other RESTful actions that are needed for your API&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Install Theme in Rails</title>
@@ -25,6 +70,7 @@
 &lt;li&gt;Look through the &lt;code&gt;index.html&lt;/code&gt; file to see their &lt;code&gt;link&lt;/code&gt; tags for stylesheets. This will also tell you which ones they are using.&lt;/li&gt;
 &lt;li&gt;You will not need to include their bootstrap.css file - use the gem to use Bootstrap.&lt;/li&gt;
 &lt;li&gt;If they are using Font Awesome, you will also not have to include that. Use the &lt;code&gt;font-awesome-rails&lt;/code&gt; gem instead.&lt;/li&gt;
+&lt;li&gt;Check to see if they have classes/ids on their &lt;code&gt;&amp;lt;body&amp;gt;&lt;/code&gt; tag. This is true for anything though - make sure class and id names are matching up with what they have.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h2 id=&#34;integrate-into-your-app&#34;&gt;Integrate into your App&lt;/h2&gt;

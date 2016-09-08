@@ -60,6 +60,58 @@
             
             <div class="posts">
                 
+                <h1 class="content-subhead">02 Aug 2016, 17:25</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="https://trevordjones.github.io/cheatsheets/post/active-record-queries/" class="post-title">Active Record Queries</a>
+
+                        <p class="post-meta">
+                            
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        <p>Substitue &ldquo;Model&rdquo; with your model:</p>
+
+<pre><code class="language-ruby">Model.first
+# find the first record
+
+Model.last
+# find the last record
+
+Model.find_by(attribute: 'value')
+# find the record by a specific attribute
+
+Model.order(:attribute)
+# order the records by the attribute - ascending is default
+
+Model.order(:attribute :desc)
+# order the records by the attribute, use descending order
+
+Model.where(attribute: 'value')
+# returns all records where the attribute equals the given value
+
+Model.where('attribute &gt; ?', 'value')
+# returns all records where the attribute is greater than the given value
+
+Model.where(attribute: 'value', other_attribute: 'other_value')
+# returns all records where the attribute is equal to value and other_attribute is equal to other_value
+
+Model.where('attribute LIKE ?', '%value%')
+# returns all records where the attribute is similar to the value. The % sign on each side means anything can be before or after - very general search
+
+Model.where('attribute LIKE ? AND other = ?', '%value%', 'other_value')
+# returns all records where the attribute is similar to the value AND other is equal to the other value
+
+Model.where('attribute LIKE? OR other = ?', '%value%', 'other_value')
+# returns all records where the attribute is similar to the value OR other is equal the other value
+</code></pre>
+
+                    </div>
+                </section>
+                
                 <h1 class="content-subhead">02 Aug 2016, 17:24</h1>
                 <section class="post">
                     <header class="post-header">
@@ -227,6 +279,8 @@ $ git diff file_name
 <p><a href="https://trevordjones.github.io/cheatsheets/post/active-record-queries/">Active Record Queries</a></p>
 
 <p><a href="https://trevordjones.github.io/cheatsheets/post/angular-setup/">Angular, Setup in Rails</a></p>
+
+<p><a href="https://trevordjones.github.io/cheatsheets/post/create-an-api/">API, Create</a></p>
 
 <p><a href="https://trevordjones.github.io/cheatsheets/post/atom-shortcuts/">Atom Shortcuts</a></p>
 

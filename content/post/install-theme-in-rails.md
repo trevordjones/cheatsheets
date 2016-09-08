@@ -11,6 +11,7 @@ title = "Install Theme in Rails"
 3. Look through the `index.html` file to see their `link` tags for stylesheets. This will also tell you which ones they are using.
 4. You will not need to include their bootstrap.css file - use the gem to use Bootstrap.
 5. If they are using Font Awesome, you will also not have to include that. Use the `font-awesome-rails` gem instead.
+6. Check to see if they have classes/ids on their `<body>` tag. This is true for anything though - make sure class and id names are matching up with what they have.
 
 ## Integrate into your App
 
