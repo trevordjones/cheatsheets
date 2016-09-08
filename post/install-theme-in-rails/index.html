@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Install Theme in Rails &middot; Rails Development</title>
+
+    <meta name="description" content="">
+
+    <meta name="generator" content="Hugo 0.16" />
+    <meta name="twitter:card" content="summary">
+    
+    <meta name="twitter:title" content="Install Theme in Rails &middot; Rails Development">
+    <meta name="twitter:description" content="">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Install Theme in Rails &middot; Rails Development">
+    <meta property="og:description" content="">
+
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+
+    <link rel="stylesheet" href="https://trevordjones.github.io/cheatsheets//css/all.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="alternate" type="application/rss+xml" title="Rails Development" href="https://trevordjones.github.io/cheatsheets//index.xml" />
+</head>
+<body>
+
+
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="https://trevordjones.github.io/cheatsheets/">Rails Development</a></h1>
+            <h2 class="brand-tagline"> Common Commands </h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://github.com/trevordjones "><i class="fa fa-github-alt"></i> github</a>
+                </li>
+                
+                
+                
+                  <li class="page-items"><a href="https://trevordjones.github.io/cheatsheets/page/summary">summary</a></li>
+                
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                <h1 class="content-subhead">07 Sep 2016, 17:45</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="https://trevordjones.github.io/cheatsheets/post/install-theme-in-rails/" class="post-title">Install Theme in Rails</a>
+
+                        <p class="post-meta">
+                            
+                            
+                        </p>
+                    </header>
+                    
+                    <div class="post-description">
+                        
+
+<h3 id="tips">Tips</h3>
+
+<ol>
+<li>Read their README - many will have one but perhaps not every single one. The README is usually the <code>index.html</code> file you see in the theme&rsquo;s parent directory. If you double click on it, it should open up in the browser.</li>
+<li>Look through what is required for the theme. It will most likely show you what css files are necessary and which are not.</li>
+<li>Look through the <code>index.html</code> file to see their <code>link</code> tags for stylesheets. This will also tell you which ones they are using.</li>
+<li>You will not need to include their bootstrap.css file - use the gem to use Bootstrap.</li>
+<li>If they are using Font Awesome, you will also not have to include that. Use the <code>font-awesome-rails</code> gem instead.</li>
+</ol>
+
+<h2 id="integrate-into-your-app">Integrate into your App</h2>
+
+<h3 id="css">CSS</h3>
+
+<ol>
+<li>Copy over all the css files into <code>vendor/assets/stylesheets</code></li>
+
+<li><p>Create a <code>manifest.css</code> file in the same directory and place the following within it.</p>
+
+<pre><code class="language-css">/*
+*= require_tree .
+*/
+</code></pre>
+
+<p>This will require all the files in <code>vendor/assets/stylesheets</code>.</p></li>
+
+<li><p>Now inside your <code>app/assets/stylesheets/application.css</code> file add <code>*= require manifest</code> <em>before</em> <code>require_tree .</code>.</p></li>
+
+<li><p>Go to your theme&rsquo;s <code>index.html</code> file and copy the top nav elements from it. This file will normally have comments telling you which sections are which, so simply look for the section that outlines your top nav. Paste this into your <code>application.html.erb</code> file right below the <code>&lt;body&gt;</code> tag and <em>before</em> the <code>yield</code> method.</p></li>
+
+<li><p>Also include the footer section from the <code>index.html</code> file. Copy and paste it <em>below</em> the <code>yield</code> method in the <code>application.html.erb</code> file but before the closing <code>&lt;/body&gt;</code> tag.</p></li>
+
+<li><p>Inside your <code>application.html.erb</code> file will be html you want included on every page in your site. This is why we only did the nav and the footer. If there is anything else you want to appear on every page - include it inside this <code>application.html.erb</code> file.</p></li>
+</ol>
+
+<h3 id="javascript">JavaScript</h3>
+
+<ol>
+<li>You can do much the same thing with JavaScript. Include all their necessary JS files into <code>vendor/assets/javascripts</code>.</li>
+<li>You will not need their jQuery file since it&rsquo;s included with Rails by default (be careful with this though. Your theme may be using a different version of jQuery that has breaking changes with Rails version of jQuery. Be aware of that.)</li>
+
+<li><p>Create the <code>manifest.js</code> file and include:</p>
+
+<pre><code class="language-javascript">// require_tree .
+</code></pre></li>
+
+<li><p>Now inside <code>app/assets/javascripts/application.js</code> include <code>//require manifest</code></p></li>
+
+<li><p>Check your console for JS errors</p></li>
+</ol>
+
+<h3 id="js-tips">JS Tips</h3>
+
+<p>Sometimes the JS will be looking for elements that have not been created yet. That is because the code to include JS into your html is towards the top of the page and can run before the rest of the html is rendered. So if it&rsquo;s looking for an id of &ldquo;main&rdquo; (which is in your html) and can&rsquo;t find it - it&rsquo;s running before that particular bit of html is created.</p>
+
+<p>To solve this, simply move the <code>&lt;%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %&gt;</code> to be below the closing <code>&lt;/body&gt;</code> tag. This will ensure the JS doesn&rsquo;t run before the page is loaded.</p>
+
+<p>Check your console for JS errors. It should tell you where there are problems if any.</p>
+
+<h3 id="images">Images</h3>
+
+<ol>
+<li>Copy images you want to use to your <code>app/assets/images</code> directory.</li>
+
+<li><p>When you want to use these inside your html, you can</p>
+
+<pre><code class="language-html">&lt;%= image_tag('image_name.png') %&gt;
+</code></pre>
+
+<p>This will convert to <code>&lt;img src=&quot;/assets/images/image_name.png&quot; alt=&quot;&quot;&gt;</code>. This is the preferred way in Rails to include your images.</p></li>
+</ol>
+
+                    </div>
+                    
+                </section>
+            </div>
+            <div class="footer">
+    <div class="pure-menu pure-menu-horizontal pure-menu-open">
+        <ul>
+            <li>Powered by <a class="hugo" href="https://gohugo.io/" target="_blank">hugo</a></li>
+        </ul>
+    </div>
+</div>
+<script src="https://trevordjones.github.io/cheatsheets//js/all.min.js"></script>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', '', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

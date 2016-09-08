@@ -60,6 +60,96 @@
             
             <div class="posts">
                 
+                <h1 class="content-subhead">07 Sep 2016, 17:45</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="https://trevordjones.github.io/cheatsheets/post/install-theme-in-rails/" class="post-title">Install Theme in Rails</a>
+
+                        <p class="post-meta">
+                            
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        
+
+<h3 id="tips">Tips</h3>
+
+<ol>
+<li>Read their README - many will have one but perhaps not every single one. The README is usually the <code>index.html</code> file you see in the theme&rsquo;s parent directory. If you double click on it, it should open up in the browser.</li>
+<li>Look through what is required for the theme. It will most likely show you what css files are necessary and which are not.</li>
+<li>Look through the <code>index.html</code> file to see their <code>link</code> tags for stylesheets. This will also tell you which ones they are using.</li>
+<li>You will not need to include their bootstrap.css file - use the gem to use Bootstrap.</li>
+<li>If they are using Font Awesome, you will also not have to include that. Use the <code>font-awesome-rails</code> gem instead.</li>
+</ol>
+
+<h2 id="integrate-into-your-app">Integrate into your App</h2>
+
+<h3 id="css">CSS</h3>
+
+<ol>
+<li>Copy over all the css files into <code>vendor/assets/stylesheets</code></li>
+
+<li><p>Create a <code>manifest.css</code> file in the same directory and place the following within it.</p>
+
+<pre><code class="language-css">/*
+*= require_tree .
+*/
+</code></pre>
+
+<p>This will require all the files in <code>vendor/assets/stylesheets</code>.</p></li>
+
+<li><p>Now inside your <code>app/assets/stylesheets/application.css</code> file add <code>*= require manifest</code> <em>before</em> <code>require_tree .</code>.</p></li>
+
+<li><p>Go to your theme&rsquo;s <code>index.html</code> file and copy the top nav elements from it. This file will normally have comments telling you which sections are which, so simply look for the section that outlines your top nav. Paste this into your <code>application.html.erb</code> file right below the <code>&lt;body&gt;</code> tag and <em>before</em> the <code>yield</code> method.</p></li>
+
+<li><p>Also include the footer section from the <code>index.html</code> file. Copy and paste it <em>below</em> the <code>yield</code> method in the <code>application.html.erb</code> file but before the closing <code>&lt;/body&gt;</code> tag.</p></li>
+
+<li><p>Inside your <code>application.html.erb</code> file will be html you want included on every page in your site. This is why we only did the nav and the footer. If there is anything else you want to appear on every page - include it inside this <code>application.html.erb</code> file.</p></li>
+</ol>
+
+<h3 id="javascript">JavaScript</h3>
+
+<ol>
+<li>You can do much the same thing with JavaScript. Include all their necessary JS files into <code>vendor/assets/javascripts</code>.</li>
+<li>You will not need their jQuery file since it&rsquo;s included with Rails by default (be careful with this though. Your theme may be using a different version of jQuery that has breaking changes with Rails version of jQuery. Be aware of that.)</li>
+
+<li><p>Create the <code>manifest.js</code> file and include:</p>
+
+<pre><code class="language-javascript">// require_tree .
+</code></pre></li>
+
+<li><p>Now inside <code>app/assets/javascripts/application.js</code> include <code>//require manifest</code></p></li>
+
+<li><p>Check your console for JS errors</p></li>
+</ol>
+
+<h3 id="js-tips">JS Tips</h3>
+
+<p>Sometimes the JS will be looking for elements that have not been created yet. That is because the code to include JS into your html is towards the top of the page and can run before the rest of the html is rendered. So if it&rsquo;s looking for an id of &ldquo;main&rdquo; (which is in your html) and can&rsquo;t find it - it&rsquo;s running before that particular bit of html is created.</p>
+
+<p>To solve this, simply move the <code>&lt;%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %&gt;</code> to be below the closing <code>&lt;/body&gt;</code> tag. This will ensure the JS doesn&rsquo;t run before the page is loaded.</p>
+
+<p>Check your console for JS errors. It should tell you where there are problems if any.</p>
+
+<h3 id="images">Images</h3>
+
+<ol>
+<li>Copy images you want to use to your <code>app/assets/images</code> directory.</li>
+
+<li><p>When you want to use these inside your html, you can</p>
+
+<pre><code class="language-html">&lt;%= image_tag('image_name.png') %&gt;
+</code></pre>
+
+<p>This will convert to <code>&lt;img src=&quot;/assets/images/image_name.png&quot; alt=&quot;&quot;&gt;</code>. This is the preferred way in Rails to include your images.</p></li>
+</ol>
+
+                    </div>
+                </section>
+                
                 <h1 class="content-subhead">07 Sep 2016, 12:44</h1>
                 <section class="post">
                     <header class="post-header">
@@ -78,7 +168,7 @@
 <h3 id="setup-angular-in-your-rails-app">Setup Angular in your Rails App</h3>
 
 <ol>
-<li>Go to (<a href="https://angularjs.org)[https://angularjs.org">https://angularjs.org)[https://angularjs.org</a>] and download the compressed angular.js file.</li>
+<li>Go to <a href="https://angularjs.org">https://angularjs.org</a> and download the compressed angular.js file.</li>
 <li>Copy that file into <code>vendor/assets/javascripts</code> folder.</li>
 <li>Add <code>//= require angular</code> to the asset pipeline (i.e. <code>app/assets/javascripts/application.js</code>) on the line before <code>//= require_tree .</code>.</li>
 <li>Get rid of the turbolinks line in that file, which can cause problems down the road.</li>
@@ -830,60 +920,6 @@ Model.where('attribute LIKE ? AND other = ?', '%value%', 'other_value')
 
 Model.where('attribute LIKE? OR other = ?', '%value%', 'other_value')
 # returns all records where the attribute is similar to the value OR other is equal the other value
-</code></pre>
-
-                    </div>
-                </section>
-                
-                <h1 class="content-subhead">02 Aug 2016, 17:24</h1>
-                <section class="post">
-                    <header class="post-header">
-
-                        <a href="https://trevordjones.github.io/cheatsheets/post/active-record-methods/" class="post-title">Active Record Methods</a>
-
-                        <p class="post-meta">
-                            
-                            
-                        </p>
-                    </header>
-
-                    <div class="post-description">
-                        <p>Say you created a new model in your Rails app called “Recipe”. This is what you would type into Rails Console to edit the data table associated with the model.</p>
-
-<pre><code class="language-bash">recipe = Recipe.new(attribute: “input”, attribute: “input”)
-recipe.save
-# The first command creates a new instance of a Recipe
-# The second command saves the recipe data to your database
-# remember that 'recipe' is only a variable. This can be called anything
-
-recipe = Recipe.create(attribute: “input”, attribute: “input”)
-# This is a shortcut for the above two commands, it creates a new instance AND saves it to the database.
-
-recipes = Recipe.all
-# This shows all the data table entries (IN RAILS CONSOLE, if you wanted to show this information, on a view page for example, you would have to loop through this array of hashes)
-
-recipe = Recipe.first
-# This shows the first data table entry
-
-recipe = Recipe.last
-#This shows the last data table entry
-
-recipe = Recipe.find_by(attribute: “specific value”)
-# This allows you to find a data entry by a specific attribute’s value.
-# EX: Recipe.find_by(chef: “Mark’s Dad”) will find the first recipe whose chef is “Mark’s Dad”
-
-recipe = Recipe.first
-recipe.attribute = “input”
-recipe.save
-#This allows you update an entry in your data table. Remember, you must choose which recipe you want to update first before you can use this method. In this example, we’re choosing to update the first recipe in the data table.
-
-recipe = Recipe.first
-recipe.update(attribute: “input”)
-# This is a shortcut for the above commands, it changes the instance attributes AND saves it to the database.
-
-recipe = Recipe.first
-recipe.destroy
-# This allows you destroy an entry in your data table. Remember, you must choose which recipe you want to destroy first before you can use this method. In this example, we’re choosing to destroy the first recipe in the data table.
 </code></pre>
 
                     </div>

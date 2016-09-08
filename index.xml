@@ -6,8 +6,90 @@
     <description>Recent content on Rails Development</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 07 Sep 2016 12:44:51 -0400</lastBuildDate>
+    <lastBuildDate>Wed, 07 Sep 2016 17:45:32 -0400</lastBuildDate>
     <atom:link href="https://trevordjones.github.io/cheatsheets/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Install Theme in Rails</title>
+      <link>https://trevordjones.github.io/cheatsheets/post/install-theme-in-rails/</link>
+      <pubDate>Wed, 07 Sep 2016 17:45:32 -0400</pubDate>
+      
+      <guid>https://trevordjones.github.io/cheatsheets/post/install-theme-in-rails/</guid>
+      <description>
+
+&lt;h3 id=&#34;tips&#34;&gt;Tips&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Read their README - many will have one but perhaps not every single one. The README is usually the &lt;code&gt;index.html&lt;/code&gt; file you see in the theme&amp;rsquo;s parent directory. If you double click on it, it should open up in the browser.&lt;/li&gt;
+&lt;li&gt;Look through what is required for the theme. It will most likely show you what css files are necessary and which are not.&lt;/li&gt;
+&lt;li&gt;Look through the &lt;code&gt;index.html&lt;/code&gt; file to see their &lt;code&gt;link&lt;/code&gt; tags for stylesheets. This will also tell you which ones they are using.&lt;/li&gt;
+&lt;li&gt;You will not need to include their bootstrap.css file - use the gem to use Bootstrap.&lt;/li&gt;
+&lt;li&gt;If they are using Font Awesome, you will also not have to include that. Use the &lt;code&gt;font-awesome-rails&lt;/code&gt; gem instead.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;integrate-into-your-app&#34;&gt;Integrate into your App&lt;/h2&gt;
+
+&lt;h3 id=&#34;css&#34;&gt;CSS&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Copy over all the css files into &lt;code&gt;vendor/assets/stylesheets&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Create a &lt;code&gt;manifest.css&lt;/code&gt; file in the same directory and place the following within it.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;/*
+*= require_tree .
+*/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will require all the files in &lt;code&gt;vendor/assets/stylesheets&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Now inside your &lt;code&gt;app/assets/stylesheets/application.css&lt;/code&gt; file add &lt;code&gt;*= require manifest&lt;/code&gt; &lt;em&gt;before&lt;/em&gt; &lt;code&gt;require_tree .&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Go to your theme&amp;rsquo;s &lt;code&gt;index.html&lt;/code&gt; file and copy the top nav elements from it. This file will normally have comments telling you which sections are which, so simply look for the section that outlines your top nav. Paste this into your &lt;code&gt;application.html.erb&lt;/code&gt; file right below the &lt;code&gt;&amp;lt;body&amp;gt;&lt;/code&gt; tag and &lt;em&gt;before&lt;/em&gt; the &lt;code&gt;yield&lt;/code&gt; method.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Also include the footer section from the &lt;code&gt;index.html&lt;/code&gt; file. Copy and paste it &lt;em&gt;below&lt;/em&gt; the &lt;code&gt;yield&lt;/code&gt; method in the &lt;code&gt;application.html.erb&lt;/code&gt; file but before the closing &lt;code&gt;&amp;lt;/body&amp;gt;&lt;/code&gt; tag.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Inside your &lt;code&gt;application.html.erb&lt;/code&gt; file will be html you want included on every page in your site. This is why we only did the nav and the footer. If there is anything else you want to appear on every page - include it inside this &lt;code&gt;application.html.erb&lt;/code&gt; file.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;javascript&#34;&gt;JavaScript&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;You can do much the same thing with JavaScript. Include all their necessary JS files into &lt;code&gt;vendor/assets/javascripts&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;You will not need their jQuery file since it&amp;rsquo;s included with Rails by default (be careful with this though. Your theme may be using a different version of jQuery that has breaking changes with Rails version of jQuery. Be aware of that.)&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Create the &lt;code&gt;manifest.js&lt;/code&gt; file and include:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;// require_tree .
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Now inside &lt;code&gt;app/assets/javascripts/application.js&lt;/code&gt; include &lt;code&gt;//require manifest&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Check your console for JS errors&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;js-tips&#34;&gt;JS Tips&lt;/h3&gt;
+
+&lt;p&gt;Sometimes the JS will be looking for elements that have not been created yet. That is because the code to include JS into your html is towards the top of the page and can run before the rest of the html is rendered. So if it&amp;rsquo;s looking for an id of &amp;ldquo;main&amp;rdquo; (which is in your html) and can&amp;rsquo;t find it - it&amp;rsquo;s running before that particular bit of html is created.&lt;/p&gt;
+
+&lt;p&gt;To solve this, simply move the &lt;code&gt;&amp;lt;%= javascript_include_tag &#39;application&#39;, &#39;data-turbolinks-track&#39;: &#39;reload&#39; %&amp;gt;&lt;/code&gt; to be below the closing &lt;code&gt;&amp;lt;/body&amp;gt;&lt;/code&gt; tag. This will ensure the JS doesn&amp;rsquo;t run before the page is loaded.&lt;/p&gt;
+
+&lt;p&gt;Check your console for JS errors. It should tell you where there are problems if any.&lt;/p&gt;
+
+&lt;h3 id=&#34;images&#34;&gt;Images&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Copy images you want to use to your &lt;code&gt;app/assets/images&lt;/code&gt; directory.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;When you want to use these inside your html, you can&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;%= image_tag(&#39;image_name.png&#39;) %&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will convert to &lt;code&gt;&amp;lt;img src=&amp;quot;/assets/images/image_name.png&amp;quot; alt=&amp;quot;&amp;quot;&amp;gt;&lt;/code&gt;. This is the preferred way in Rails to include your images.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
     
     <item>
       <title>Angular Setup</title>
@@ -20,7 +102,7 @@
 &lt;h3 id=&#34;setup-angular-in-your-rails-app&#34;&gt;Setup Angular in your Rails App&lt;/h3&gt;
 
 &lt;ol&gt;
-&lt;li&gt;Go to (&lt;a href=&#34;https://angularjs.org)[https://angularjs.org&#34;&gt;https://angularjs.org)[https://angularjs.org&lt;/a&gt;] and download the compressed angular.js file.&lt;/li&gt;
+&lt;li&gt;Go to &lt;a href=&#34;https://angularjs.org&#34;&gt;https://angularjs.org&lt;/a&gt; and download the compressed angular.js file.&lt;/li&gt;
 &lt;li&gt;Copy that file into &lt;code&gt;vendor/assets/javascripts&lt;/code&gt; folder.&lt;/li&gt;
 &lt;li&gt;Add &lt;code&gt;//= require angular&lt;/code&gt; to the asset pipeline (i.e. &lt;code&gt;app/assets/javascripts/application.js&lt;/code&gt;) on the line before &lt;code&gt;//= require_tree .&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;Get rid of the turbolinks line in that file, which can cause problems down the road.&lt;/li&gt;
@@ -866,6 +948,8 @@ $ git diff file_name
 &lt;p&gt;&lt;a href=&#34;https://trevordjones.github.io/cheatsheets/post/rails-commands/&#34;&gt;Rails Commands&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://trevordjones.github.io/cheatsheets/post/terminal/&#34;&gt;Terminal&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://trevordjones.github.io/cheatsheets/post/install-theme-in-rails/&#34;&gt;Theme, Install in Rails&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
