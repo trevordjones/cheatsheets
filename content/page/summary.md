@@ -23,3 +23,5 @@
 [Rails Commands]({{< ref "rails-commands.md" >}})
 
 [Terminal]({{< ref "terminal.md" >}})
+
+[Theme, Install in Rails]({{< ref "install-theme-in-rails.md" >}})

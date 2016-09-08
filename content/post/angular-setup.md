@@ -6,7 +6,7 @@ title = "Angular Setup"
 +++
 
 ### Setup Angular in your Rails App
-1. Go to (https://angularjs.org)[https://angularjs.org] and download the compressed angular.js file.
+1. Go to [https://angularjs.org](https://angularjs.org) and download the compressed angular.js file.
 2. Copy that file into `vendor/assets/javascripts` folder.
 3. Add `//= require angular` to the asset pipeline (i.e. `app/assets/javascripts/application.js`) on the line before `//= require_tree .`.
 4. Get rid of the turbolinks line in that file, which can cause problems down the road.
