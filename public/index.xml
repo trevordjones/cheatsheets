@@ -6,8 +6,68 @@
     <description>Recent content on Rails Development</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 08 Sep 2016 16:43:01 -0400</lastBuildDate>
+    <lastBuildDate>Tue, 20 Sep 2016 10:23:48 -0400</lastBuildDate>
     <atom:link href="https://trevordjones.github.io/cheatsheets/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Carrierwave to Upload Images</title>
+      <link>https://trevordjones.github.io/cheatsheets/post/carrierwave/</link>
+      <pubDate>Tue, 20 Sep 2016 10:23:48 -0400</pubDate>
+      
+      <guid>https://trevordjones.github.io/cheatsheets/post/carrierwave/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Add gem to Gemfile&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;gem &#39;carrierwave&#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Bundle it up&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;rails generate uploader RecipePhoto&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The above command will create a file in your &lt;code&gt;app/uploaders&lt;/code&gt; directory. It will contain a class called &lt;code&gt;RecipePhotoUploader&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;In your terminal, run &lt;code&gt;rails g migration AddPhotoToRecipe photo&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Then &lt;code&gt;rake db:migrate&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;In your model (Recipe in this case), add&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;mount_uploader :photo, RecipePhotoUploader
+# this connects the RecipePhotoUploader we generated to the photo column in the recipe model.
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Create the form. To get this to work with &lt;code&gt;form_tag&lt;/code&gt;, use the following format:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;&amp;lt;%= form_tag(&amp;quot;/recipes/#{@recipe.id}&amp;quot;, method: &#39;patch&#39;, enctype: &amp;quot;multipart/form-data&amp;quot;) do %&amp;gt;
+  &amp;lt;%= label_tag(:photo) %&amp;gt;
+  &amp;lt;%= file_field_tag(:photo) %&amp;gt;
+  # Whatever else needs to be included
+  &amp;lt;%= submit_tag(&amp;quot;Save&amp;quot;) %&amp;gt;
+&amp;lt;% end %&amp;gt;
+
+# Important part is the enctype: &amp;quot;multipart/form-data&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;In your controller:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;def update
+  recipe = Recipe.find_by(id: params[:id])
+  recipe.update(
+    photo: params[:photo]
+    # whatever else you want updated
+  )
+  redirect_to &amp;quot;/recipes/#{@recipe.id}&amp;quot;
+end
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;You can display the photo in your view with:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;&amp;lt;%= image_tag(@recipe.photo.url) %&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Create an API</title>
@@ -958,46 +1018,6 @@ $ git log
 $ git diff file_name
 # See the changes of the files
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://trevordjones.github.io/cheatsheets/page/summary/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://trevordjones.github.io/cheatsheets/page/summary/</guid>
-      <description>
-
-&lt;h2 id=&#34;cheatsheets-listed-alphabetically&#34;&gt;Cheatsheets listed alphabetically&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://trevordjones.github.io/cheatsheets/post/active-record-methods/&#34;&gt;Active Record Methods&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://trevordjones.github.io/cheatsheets/post/active-record-queries/&#34;&gt;Active Record Queries&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://trevordjones.github.io/cheatsheets/post/angular-setup/&#34;&gt;Angular, Setup in Rails&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://trevordjones.github.io/cheatsheets/post/create-an-api/&#34;&gt;API, Create&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://trevordjones.github.io/cheatsheets/post/atom-shortcuts/&#34;&gt;Atom Shortcuts&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://trevordjones.github.io/cheatsheets/post/authentication/&#34;&gt;Authentication&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://trevordjones.github.io/cheatsheets/post/install-bootstrap/&#34;&gt;Bootstrap, Install&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://trevordjones.github.io/cheatsheets/post/git-cheatsheet/&#34;&gt;Git&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://trevordjones.github.io/cheatsheets/post/github-cheatsheet/&#34;&gt;Github&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://trevordjones.github.io/cheatsheets/post/migrations/&#34;&gt;Migrations&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://trevordjones.github.io/cheatsheets/post/shutdown-restart-postgres/&#34;&gt;Postgres, shutting down&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://trevordjones.github.io/cheatsheets/post/rails-commands/&#34;&gt;Rails Commands&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://trevordjones.github.io/cheatsheets/post/terminal/&#34;&gt;Terminal&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://trevordjones.github.io/cheatsheets/post/install-theme-in-rails/&#34;&gt;Theme, Install in Rails&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
