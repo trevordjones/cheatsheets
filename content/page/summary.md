@@ -14,6 +14,8 @@
 
 [Bootstrap, Install]({{< ref "install-bootstrap.md">}})
 
+[Carrierwave]({{ <ref "carrierwave.md"> }})
+
 [Git]({{< ref "git-cheatsheet.md">}})
 
 [Github]({{< ref "github-cheatsheet.md" >}})
