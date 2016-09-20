@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrierwave to Upload Images &middot; Rails Development</title>
+
+    <meta name="description" content="">
+
+    <meta name="generator" content="Hugo 0.16" />
+    <meta name="twitter:card" content="summary">
+    
+    <meta name="twitter:title" content="Carrierwave to Upload Images &middot; Rails Development">
+    <meta name="twitter:description" content="">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Carrierwave to Upload Images &middot; Rails Development">
+    <meta property="og:description" content="">
+
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+
+    <link rel="stylesheet" href="https://trevordjones.github.io/cheatsheets//css/all.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="alternate" type="application/rss+xml" title="Rails Development" href="https://trevordjones.github.io/cheatsheets//index.xml" />
+</head>
+<body>
+
+
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="https://trevordjones.github.io/cheatsheets/">Rails Development</a></h1>
+            <h2 class="brand-tagline"> Common Commands </h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://github.com/trevordjones "><i class="fa fa-github-alt"></i> github</a>
+                </li>
+                
+                
+                
+                  <li class="page-items"><a href="https://trevordjones.github.io/cheatsheets/page/summary">summary</a></li>
+                
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                <h1 class="content-subhead">20 Sep 2016, 10:23</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="https://trevordjones.github.io/cheatsheets/post/carrierwave/" class="post-title">Carrierwave to Upload Images</a>
+
+                        <p class="post-meta">
+                            
+                            
+                        </p>
+                    </header>
+                    
+                    <div class="post-description">
+                        <ul>
+<li><p>Add gem to Gemfile</p>
+
+<pre><code class="language-ruby">gem 'carrierwave'
+</code></pre></li>
+
+<li><p>Bundle it up</p></li>
+
+<li><p><code>rails generate uploader RecipePhoto</code></p></li>
+
+<li><p>The above command will create a file in your <code>app/uploaders</code> directory. It will contain a class called <code>RecipePhotoUploader</code></p></li>
+
+<li><p>In your terminal, run <code>rails g migration AddPhotoToRecipe photo</code></p></li>
+
+<li><p>Then <code>rake db:migrate</code></p></li>
+
+<li><p>In your model (Recipe in this case), add</p>
+
+<pre><code class="language-ruby">mount_uploader :photo, RecipePhotoUploader
+# this connects the RecipePhotoUploader we generated to the photo column in the recipe model.
+</code></pre></li>
+
+<li><p>Create the form. To get this to work with <code>form_tag</code>, use the following format:</p>
+
+<pre><code class="language-ruby">&lt;%= form_tag(&quot;/recipes/#{@recipe.id}&quot;, method: 'patch', enctype: &quot;multipart/form-data&quot;) do %&gt;
+  &lt;%= label_tag(:photo) %&gt;
+  &lt;%= file_field_tag(:photo) %&gt;
+  # Whatever else needs to be included
+  &lt;%= submit_tag(&quot;Save&quot;) %&gt;
+&lt;% end %&gt;
+
+# Important part is the enctype: &quot;multipart/form-data&quot;
+</code></pre></li>
+
+<li><p>In your controller:</p>
+
+<pre><code class="language-ruby">def update
+  recipe = Recipe.find_by(id: params[:id])
+  recipe.update(
+    photo: params[:photo]
+    # whatever else you want updated
+  )
+  redirect_to &quot;/recipes/#{@recipe.id}&quot;
+end
+</code></pre></li>
+
+<li><p>You can display the photo in your view with:</p>
+
+<pre><code class="language-ruby">&lt;%= image_tag(@recipe.photo.url) %&gt;
+</code></pre></li>
+</ul>
+
+                    </div>
+                    
+                </section>
+            </div>
+            <div class="footer">
+    <div class="pure-menu pure-menu-horizontal pure-menu-open">
+        <ul>
+            <li>Powered by <a class="hugo" href="https://gohugo.io/" target="_blank">hugo</a></li>
+        </ul>
+    </div>
+</div>
+<script src="https://trevordjones.github.io/cheatsheets//js/all.min.js"></script>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', '', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>
